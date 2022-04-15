@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package area;
+option go_package = "github.com/kokutas/pb/area";
+import public "google/protobuf/timestamp.proto";
+
+//The Area service definition.
+service Area {
+    rpc Save   (SaveRequest  ) returns (SaveReply  );
+    rpc Get    (GetRequest   ) returns (GetReply   );
+    rpc Update (UpdateRequest) returns (UpdateReply);
+    rpc Delete (DeleteRequest) returns (DeleteReply);
+}
+   
+message SaveRequest {
+    string id = 1;
+    string code = 2;
+    string name = 3;
+    string time_zone = 4;
+    string state = 5;
+    google.protobuf.Timestamp create_time = 6;
+    google.protobuf.Timestamp update_time = 7;
+    google.protobuf.Timestamp delete_time = 8;
+}
+message SaveReply {
+    string id = 1;
+}
+message GetRequest {
+    string id = 1;
+}
+message GetReply {
+    string id = 1;
+}
+message UpdateRequest {
+    string id = 1;
+}
+message UpdateReply {
+    string id = 1;
+}
+message DeleteRequest {
+    string id = 1;
+}
+message DeleteReply {
+    string id = 1;
+}
