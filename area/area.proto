@@ -21,9 +21,8 @@ message Area {
     int64 delete_time = 9;
 }
 message Reply {
-    bool success = 1;
-    int64 code = 2;
-    string reason = 3;
+    int64 code = 1;
+    string reason = 2;
 }
 //The Area service definition.
 service AreaService {
