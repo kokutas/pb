@@ -1,0 +1,4 @@
+syntax = "proto3";
+
+package enum;
+option go_package = "github.com/kokutas/pb/enum";

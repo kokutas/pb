@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package organize;
+option go_package = "github.com/kokutas/pb/organize";
+
+message Organize {
+    string id = 1;
+    string name = 2;
+    string code = 3;
+    string domain = 4;
+    bool state = 5;
+}
