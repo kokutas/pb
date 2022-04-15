@@ -3,6 +3,10 @@ syntax = "proto3";
 package organize;
 option go_package = "github.com/kokutas/pb/organize";
 
+// service OrganizeService {
+//     rpc 
+// }
+
 message Organize {
     string id = 1;
     string name = 2;

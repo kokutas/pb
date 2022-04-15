@@ -18,194 +18,770 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// AreaClient is the client API for Area service.
+// AreaServiceClient is the client API for AreaService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type AreaClient interface {
+type AreaServiceClient interface {
 	Save(ctx context.Context, in *SaveRequest, opts ...grpc.CallOption) (*SaveReply, error)
 	Get(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*GetReply, error)
-	Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateReply, error)
-	Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*DeleteReply, error)
+	GetById(ctx context.Context, in *GetByIdRequest, opts ...grpc.CallOption) (*GetByIdReply, error)
+	GetByCode(ctx context.Context, in *GetByCodeRequest, opts ...grpc.CallOption) (*GetByCodeReply, error)
+	GetByName(ctx context.Context, in *GetByNameRequest, opts ...grpc.CallOption) (*GetByNameReply, error)
+	GetByTimeZone(ctx context.Context, in *GetByTimeZoneRequest, opts ...grpc.CallOption) (*GetByTimeZoneReply, error)
+	GetByLanguage(ctx context.Context, in *GetByLanguageRequest, opts ...grpc.CallOption) (*GetByLanguageReply, error)
+	GetByState(ctx context.Context, in *GetByStateRequest, opts ...grpc.CallOption) (*GetByStateReply, error)
+	GetByCreateTime(ctx context.Context, in *GetByCreateTimeRequest, opts ...grpc.CallOption) (*GetByCreateTimeReply, error)
+	GetByUpdateTime(ctx context.Context, in *GetByUpdateTimeRequest, opts ...grpc.CallOption) (*GetByUpdateTimeReply, error)
+	GetByDeleteTime(ctx context.Context, in *GetByDeleteTimeRequest, opts ...grpc.CallOption) (*GetByDeleteTimeReply, error)
+	UpdateCode(ctx context.Context, in *UpdateCodeRequest, opts ...grpc.CallOption) (*UpdateCodeReply, error)
+	UpdateName(ctx context.Context, in *UpdateNameRequest, opts ...grpc.CallOption) (*UpdateNameReply, error)
+	UpdateTimeZone(ctx context.Context, in *UpdateTimeZoneRequest, opts ...grpc.CallOption) (*UpdateTimeZoneReply, error)
+	UpdateLanguage(ctx context.Context, in *UpdateLanguageRequest, opts ...grpc.CallOption) (*UpdateLanguageReply, error)
+	UpdateState(ctx context.Context, in *UpdateStateRequest, opts ...grpc.CallOption) (*UpdateStateReply, error)
+	DeleteById(ctx context.Context, in *DeleteByIdRequest, opts ...grpc.CallOption) (*DeleteByIdReply, error)
+	DeleteByCode(ctx context.Context, in *DeleteByCodeRequest, opts ...grpc.CallOption) (*DeleteByCodeReply, error)
+	DeleteByName(ctx context.Context, in *DeleteByNameRequest, opts ...grpc.CallOption) (*DeleteByNameReply, error)
+	DeleteByState(ctx context.Context, in *DeleteByStateRequest, opts ...grpc.CallOption) (*DeleteByStateReply, error)
 }
 
-type areaClient struct {
+type areaServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewAreaClient(cc grpc.ClientConnInterface) AreaClient {
-	return &areaClient{cc}
+func NewAreaServiceClient(cc grpc.ClientConnInterface) AreaServiceClient {
+	return &areaServiceClient{cc}
 }
 
-func (c *areaClient) Save(ctx context.Context, in *SaveRequest, opts ...grpc.CallOption) (*SaveReply, error) {
+func (c *areaServiceClient) Save(ctx context.Context, in *SaveRequest, opts ...grpc.CallOption) (*SaveReply, error) {
 	out := new(SaveReply)
-	err := c.cc.Invoke(ctx, "/area.Area/Save", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/area.AreaService/Save", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *areaClient) Get(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*GetReply, error) {
+func (c *areaServiceClient) Get(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*GetReply, error) {
 	out := new(GetReply)
-	err := c.cc.Invoke(ctx, "/area.Area/Get", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/area.AreaService/Get", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *areaClient) Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateReply, error) {
-	out := new(UpdateReply)
-	err := c.cc.Invoke(ctx, "/area.Area/Update", in, out, opts...)
+func (c *areaServiceClient) GetById(ctx context.Context, in *GetByIdRequest, opts ...grpc.CallOption) (*GetByIdReply, error) {
+	out := new(GetByIdReply)
+	err := c.cc.Invoke(ctx, "/area.AreaService/GetById", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *areaClient) Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*DeleteReply, error) {
-	out := new(DeleteReply)
-	err := c.cc.Invoke(ctx, "/area.Area/Delete", in, out, opts...)
+func (c *areaServiceClient) GetByCode(ctx context.Context, in *GetByCodeRequest, opts ...grpc.CallOption) (*GetByCodeReply, error) {
+	out := new(GetByCodeReply)
+	err := c.cc.Invoke(ctx, "/area.AreaService/GetByCode", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// AreaServer is the server API for Area service.
-// All implementations must embed UnimplementedAreaServer
+func (c *areaServiceClient) GetByName(ctx context.Context, in *GetByNameRequest, opts ...grpc.CallOption) (*GetByNameReply, error) {
+	out := new(GetByNameReply)
+	err := c.cc.Invoke(ctx, "/area.AreaService/GetByName", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *areaServiceClient) GetByTimeZone(ctx context.Context, in *GetByTimeZoneRequest, opts ...grpc.CallOption) (*GetByTimeZoneReply, error) {
+	out := new(GetByTimeZoneReply)
+	err := c.cc.Invoke(ctx, "/area.AreaService/GetByTimeZone", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *areaServiceClient) GetByLanguage(ctx context.Context, in *GetByLanguageRequest, opts ...grpc.CallOption) (*GetByLanguageReply, error) {
+	out := new(GetByLanguageReply)
+	err := c.cc.Invoke(ctx, "/area.AreaService/GetByLanguage", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *areaServiceClient) GetByState(ctx context.Context, in *GetByStateRequest, opts ...grpc.CallOption) (*GetByStateReply, error) {
+	out := new(GetByStateReply)
+	err := c.cc.Invoke(ctx, "/area.AreaService/GetByState", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *areaServiceClient) GetByCreateTime(ctx context.Context, in *GetByCreateTimeRequest, opts ...grpc.CallOption) (*GetByCreateTimeReply, error) {
+	out := new(GetByCreateTimeReply)
+	err := c.cc.Invoke(ctx, "/area.AreaService/GetByCreateTime", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *areaServiceClient) GetByUpdateTime(ctx context.Context, in *GetByUpdateTimeRequest, opts ...grpc.CallOption) (*GetByUpdateTimeReply, error) {
+	out := new(GetByUpdateTimeReply)
+	err := c.cc.Invoke(ctx, "/area.AreaService/GetByUpdateTime", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *areaServiceClient) GetByDeleteTime(ctx context.Context, in *GetByDeleteTimeRequest, opts ...grpc.CallOption) (*GetByDeleteTimeReply, error) {
+	out := new(GetByDeleteTimeReply)
+	err := c.cc.Invoke(ctx, "/area.AreaService/GetByDeleteTime", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *areaServiceClient) UpdateCode(ctx context.Context, in *UpdateCodeRequest, opts ...grpc.CallOption) (*UpdateCodeReply, error) {
+	out := new(UpdateCodeReply)
+	err := c.cc.Invoke(ctx, "/area.AreaService/UpdateCode", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *areaServiceClient) UpdateName(ctx context.Context, in *UpdateNameRequest, opts ...grpc.CallOption) (*UpdateNameReply, error) {
+	out := new(UpdateNameReply)
+	err := c.cc.Invoke(ctx, "/area.AreaService/UpdateName", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *areaServiceClient) UpdateTimeZone(ctx context.Context, in *UpdateTimeZoneRequest, opts ...grpc.CallOption) (*UpdateTimeZoneReply, error) {
+	out := new(UpdateTimeZoneReply)
+	err := c.cc.Invoke(ctx, "/area.AreaService/UpdateTimeZone", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *areaServiceClient) UpdateLanguage(ctx context.Context, in *UpdateLanguageRequest, opts ...grpc.CallOption) (*UpdateLanguageReply, error) {
+	out := new(UpdateLanguageReply)
+	err := c.cc.Invoke(ctx, "/area.AreaService/UpdateLanguage", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *areaServiceClient) UpdateState(ctx context.Context, in *UpdateStateRequest, opts ...grpc.CallOption) (*UpdateStateReply, error) {
+	out := new(UpdateStateReply)
+	err := c.cc.Invoke(ctx, "/area.AreaService/UpdateState", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *areaServiceClient) DeleteById(ctx context.Context, in *DeleteByIdRequest, opts ...grpc.CallOption) (*DeleteByIdReply, error) {
+	out := new(DeleteByIdReply)
+	err := c.cc.Invoke(ctx, "/area.AreaService/DeleteById", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *areaServiceClient) DeleteByCode(ctx context.Context, in *DeleteByCodeRequest, opts ...grpc.CallOption) (*DeleteByCodeReply, error) {
+	out := new(DeleteByCodeReply)
+	err := c.cc.Invoke(ctx, "/area.AreaService/DeleteByCode", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *areaServiceClient) DeleteByName(ctx context.Context, in *DeleteByNameRequest, opts ...grpc.CallOption) (*DeleteByNameReply, error) {
+	out := new(DeleteByNameReply)
+	err := c.cc.Invoke(ctx, "/area.AreaService/DeleteByName", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *areaServiceClient) DeleteByState(ctx context.Context, in *DeleteByStateRequest, opts ...grpc.CallOption) (*DeleteByStateReply, error) {
+	out := new(DeleteByStateReply)
+	err := c.cc.Invoke(ctx, "/area.AreaService/DeleteByState", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// AreaServiceServer is the server API for AreaService service.
+// All implementations must embed UnimplementedAreaServiceServer
 // for forward compatibility
-type AreaServer interface {
+type AreaServiceServer interface {
 	Save(context.Context, *SaveRequest) (*SaveReply, error)
 	Get(context.Context, *GetRequest) (*GetReply, error)
-	Update(context.Context, *UpdateRequest) (*UpdateReply, error)
-	Delete(context.Context, *DeleteRequest) (*DeleteReply, error)
-	mustEmbedUnimplementedAreaServer()
+	GetById(context.Context, *GetByIdRequest) (*GetByIdReply, error)
+	GetByCode(context.Context, *GetByCodeRequest) (*GetByCodeReply, error)
+	GetByName(context.Context, *GetByNameRequest) (*GetByNameReply, error)
+	GetByTimeZone(context.Context, *GetByTimeZoneRequest) (*GetByTimeZoneReply, error)
+	GetByLanguage(context.Context, *GetByLanguageRequest) (*GetByLanguageReply, error)
+	GetByState(context.Context, *GetByStateRequest) (*GetByStateReply, error)
+	GetByCreateTime(context.Context, *GetByCreateTimeRequest) (*GetByCreateTimeReply, error)
+	GetByUpdateTime(context.Context, *GetByUpdateTimeRequest) (*GetByUpdateTimeReply, error)
+	GetByDeleteTime(context.Context, *GetByDeleteTimeRequest) (*GetByDeleteTimeReply, error)
+	UpdateCode(context.Context, *UpdateCodeRequest) (*UpdateCodeReply, error)
+	UpdateName(context.Context, *UpdateNameRequest) (*UpdateNameReply, error)
+	UpdateTimeZone(context.Context, *UpdateTimeZoneRequest) (*UpdateTimeZoneReply, error)
+	UpdateLanguage(context.Context, *UpdateLanguageRequest) (*UpdateLanguageReply, error)
+	UpdateState(context.Context, *UpdateStateRequest) (*UpdateStateReply, error)
+	DeleteById(context.Context, *DeleteByIdRequest) (*DeleteByIdReply, error)
+	DeleteByCode(context.Context, *DeleteByCodeRequest) (*DeleteByCodeReply, error)
+	DeleteByName(context.Context, *DeleteByNameRequest) (*DeleteByNameReply, error)
+	DeleteByState(context.Context, *DeleteByStateRequest) (*DeleteByStateReply, error)
+	mustEmbedUnimplementedAreaServiceServer()
 }
 
-// UnimplementedAreaServer must be embedded to have forward compatible implementations.
-type UnimplementedAreaServer struct {
+// UnimplementedAreaServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedAreaServiceServer struct {
 }
 
-func (UnimplementedAreaServer) Save(context.Context, *SaveRequest) (*SaveReply, error) {
+func (UnimplementedAreaServiceServer) Save(context.Context, *SaveRequest) (*SaveReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Save not implemented")
 }
-func (UnimplementedAreaServer) Get(context.Context, *GetRequest) (*GetReply, error) {
+func (UnimplementedAreaServiceServer) Get(context.Context, *GetRequest) (*GetReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
 }
-func (UnimplementedAreaServer) Update(context.Context, *UpdateRequest) (*UpdateReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
+func (UnimplementedAreaServiceServer) GetById(context.Context, *GetByIdRequest) (*GetByIdReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetById not implemented")
 }
-func (UnimplementedAreaServer) Delete(context.Context, *DeleteRequest) (*DeleteReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
+func (UnimplementedAreaServiceServer) GetByCode(context.Context, *GetByCodeRequest) (*GetByCodeReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetByCode not implemented")
 }
-func (UnimplementedAreaServer) mustEmbedUnimplementedAreaServer() {}
+func (UnimplementedAreaServiceServer) GetByName(context.Context, *GetByNameRequest) (*GetByNameReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetByName not implemented")
+}
+func (UnimplementedAreaServiceServer) GetByTimeZone(context.Context, *GetByTimeZoneRequest) (*GetByTimeZoneReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetByTimeZone not implemented")
+}
+func (UnimplementedAreaServiceServer) GetByLanguage(context.Context, *GetByLanguageRequest) (*GetByLanguageReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetByLanguage not implemented")
+}
+func (UnimplementedAreaServiceServer) GetByState(context.Context, *GetByStateRequest) (*GetByStateReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetByState not implemented")
+}
+func (UnimplementedAreaServiceServer) GetByCreateTime(context.Context, *GetByCreateTimeRequest) (*GetByCreateTimeReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetByCreateTime not implemented")
+}
+func (UnimplementedAreaServiceServer) GetByUpdateTime(context.Context, *GetByUpdateTimeRequest) (*GetByUpdateTimeReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetByUpdateTime not implemented")
+}
+func (UnimplementedAreaServiceServer) GetByDeleteTime(context.Context, *GetByDeleteTimeRequest) (*GetByDeleteTimeReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetByDeleteTime not implemented")
+}
+func (UnimplementedAreaServiceServer) UpdateCode(context.Context, *UpdateCodeRequest) (*UpdateCodeReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCode not implemented")
+}
+func (UnimplementedAreaServiceServer) UpdateName(context.Context, *UpdateNameRequest) (*UpdateNameReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateName not implemented")
+}
+func (UnimplementedAreaServiceServer) UpdateTimeZone(context.Context, *UpdateTimeZoneRequest) (*UpdateTimeZoneReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateTimeZone not implemented")
+}
+func (UnimplementedAreaServiceServer) UpdateLanguage(context.Context, *UpdateLanguageRequest) (*UpdateLanguageReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateLanguage not implemented")
+}
+func (UnimplementedAreaServiceServer) UpdateState(context.Context, *UpdateStateRequest) (*UpdateStateReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateState not implemented")
+}
+func (UnimplementedAreaServiceServer) DeleteById(context.Context, *DeleteByIdRequest) (*DeleteByIdReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteById not implemented")
+}
+func (UnimplementedAreaServiceServer) DeleteByCode(context.Context, *DeleteByCodeRequest) (*DeleteByCodeReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteByCode not implemented")
+}
+func (UnimplementedAreaServiceServer) DeleteByName(context.Context, *DeleteByNameRequest) (*DeleteByNameReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteByName not implemented")
+}
+func (UnimplementedAreaServiceServer) DeleteByState(context.Context, *DeleteByStateRequest) (*DeleteByStateReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteByState not implemented")
+}
+func (UnimplementedAreaServiceServer) mustEmbedUnimplementedAreaServiceServer() {}
 
-// UnsafeAreaServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to AreaServer will
+// UnsafeAreaServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to AreaServiceServer will
 // result in compilation errors.
-type UnsafeAreaServer interface {
-	mustEmbedUnimplementedAreaServer()
+type UnsafeAreaServiceServer interface {
+	mustEmbedUnimplementedAreaServiceServer()
 }
 
-func RegisterAreaServer(s grpc.ServiceRegistrar, srv AreaServer) {
-	s.RegisterService(&Area_ServiceDesc, srv)
+func RegisterAreaServiceServer(s grpc.ServiceRegistrar, srv AreaServiceServer) {
+	s.RegisterService(&AreaService_ServiceDesc, srv)
 }
 
-func _Area_Save_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AreaService_Save_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SaveRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AreaServer).Save(ctx, in)
+		return srv.(AreaServiceServer).Save(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/area.Area/Save",
+		FullMethod: "/area.AreaService/Save",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AreaServer).Save(ctx, req.(*SaveRequest))
+		return srv.(AreaServiceServer).Save(ctx, req.(*SaveRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Area_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AreaService_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AreaServer).Get(ctx, in)
+		return srv.(AreaServiceServer).Get(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/area.Area/Get",
+		FullMethod: "/area.AreaService/Get",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AreaServer).Get(ctx, req.(*GetRequest))
+		return srv.(AreaServiceServer).Get(ctx, req.(*GetRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Area_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateRequest)
+func _AreaService_GetById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetByIdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AreaServer).Update(ctx, in)
+		return srv.(AreaServiceServer).GetById(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/area.Area/Update",
+		FullMethod: "/area.AreaService/GetById",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AreaServer).Update(ctx, req.(*UpdateRequest))
+		return srv.(AreaServiceServer).GetById(ctx, req.(*GetByIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Area_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteRequest)
+func _AreaService_GetByCode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetByCodeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AreaServer).Delete(ctx, in)
+		return srv.(AreaServiceServer).GetByCode(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/area.Area/Delete",
+		FullMethod: "/area.AreaService/GetByCode",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AreaServer).Delete(ctx, req.(*DeleteRequest))
+		return srv.(AreaServiceServer).GetByCode(ctx, req.(*GetByCodeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// Area_ServiceDesc is the grpc.ServiceDesc for Area service.
+func _AreaService_GetByName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetByNameRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AreaServiceServer).GetByName(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/area.AreaService/GetByName",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AreaServiceServer).GetByName(ctx, req.(*GetByNameRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AreaService_GetByTimeZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetByTimeZoneRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AreaServiceServer).GetByTimeZone(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/area.AreaService/GetByTimeZone",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AreaServiceServer).GetByTimeZone(ctx, req.(*GetByTimeZoneRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AreaService_GetByLanguage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetByLanguageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AreaServiceServer).GetByLanguage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/area.AreaService/GetByLanguage",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AreaServiceServer).GetByLanguage(ctx, req.(*GetByLanguageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AreaService_GetByState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetByStateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AreaServiceServer).GetByState(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/area.AreaService/GetByState",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AreaServiceServer).GetByState(ctx, req.(*GetByStateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AreaService_GetByCreateTime_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetByCreateTimeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AreaServiceServer).GetByCreateTime(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/area.AreaService/GetByCreateTime",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AreaServiceServer).GetByCreateTime(ctx, req.(*GetByCreateTimeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AreaService_GetByUpdateTime_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetByUpdateTimeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AreaServiceServer).GetByUpdateTime(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/area.AreaService/GetByUpdateTime",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AreaServiceServer).GetByUpdateTime(ctx, req.(*GetByUpdateTimeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AreaService_GetByDeleteTime_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetByDeleteTimeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AreaServiceServer).GetByDeleteTime(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/area.AreaService/GetByDeleteTime",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AreaServiceServer).GetByDeleteTime(ctx, req.(*GetByDeleteTimeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AreaService_UpdateCode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCodeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AreaServiceServer).UpdateCode(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/area.AreaService/UpdateCode",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AreaServiceServer).UpdateCode(ctx, req.(*UpdateCodeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AreaService_UpdateName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateNameRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AreaServiceServer).UpdateName(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/area.AreaService/UpdateName",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AreaServiceServer).UpdateName(ctx, req.(*UpdateNameRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AreaService_UpdateTimeZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateTimeZoneRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AreaServiceServer).UpdateTimeZone(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/area.AreaService/UpdateTimeZone",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AreaServiceServer).UpdateTimeZone(ctx, req.(*UpdateTimeZoneRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AreaService_UpdateLanguage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateLanguageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AreaServiceServer).UpdateLanguage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/area.AreaService/UpdateLanguage",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AreaServiceServer).UpdateLanguage(ctx, req.(*UpdateLanguageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AreaService_UpdateState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateStateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AreaServiceServer).UpdateState(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/area.AreaService/UpdateState",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AreaServiceServer).UpdateState(ctx, req.(*UpdateStateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AreaService_DeleteById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteByIdRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AreaServiceServer).DeleteById(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/area.AreaService/DeleteById",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AreaServiceServer).DeleteById(ctx, req.(*DeleteByIdRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AreaService_DeleteByCode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteByCodeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AreaServiceServer).DeleteByCode(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/area.AreaService/DeleteByCode",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AreaServiceServer).DeleteByCode(ctx, req.(*DeleteByCodeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AreaService_DeleteByName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteByNameRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AreaServiceServer).DeleteByName(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/area.AreaService/DeleteByName",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AreaServiceServer).DeleteByName(ctx, req.(*DeleteByNameRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AreaService_DeleteByState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteByStateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AreaServiceServer).DeleteByState(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/area.AreaService/DeleteByState",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AreaServiceServer).DeleteByState(ctx, req.(*DeleteByStateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// AreaService_ServiceDesc is the grpc.ServiceDesc for AreaService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var Area_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "area.Area",
-	HandlerType: (*AreaServer)(nil),
+var AreaService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "area.AreaService",
+	HandlerType: (*AreaServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Save",
-			Handler:    _Area_Save_Handler,
+			Handler:    _AreaService_Save_Handler,
 		},
 		{
 			MethodName: "Get",
-			Handler:    _Area_Get_Handler,
+			Handler:    _AreaService_Get_Handler,
 		},
 		{
-			MethodName: "Update",
-			Handler:    _Area_Update_Handler,
+			MethodName: "GetById",
+			Handler:    _AreaService_GetById_Handler,
 		},
 		{
-			MethodName: "Delete",
-			Handler:    _Area_Delete_Handler,
+			MethodName: "GetByCode",
+			Handler:    _AreaService_GetByCode_Handler,
+		},
+		{
+			MethodName: "GetByName",
+			Handler:    _AreaService_GetByName_Handler,
+		},
+		{
+			MethodName: "GetByTimeZone",
+			Handler:    _AreaService_GetByTimeZone_Handler,
+		},
+		{
+			MethodName: "GetByLanguage",
+			Handler:    _AreaService_GetByLanguage_Handler,
+		},
+		{
+			MethodName: "GetByState",
+			Handler:    _AreaService_GetByState_Handler,
+		},
+		{
+			MethodName: "GetByCreateTime",
+			Handler:    _AreaService_GetByCreateTime_Handler,
+		},
+		{
+			MethodName: "GetByUpdateTime",
+			Handler:    _AreaService_GetByUpdateTime_Handler,
+		},
+		{
+			MethodName: "GetByDeleteTime",
+			Handler:    _AreaService_GetByDeleteTime_Handler,
+		},
+		{
+			MethodName: "UpdateCode",
+			Handler:    _AreaService_UpdateCode_Handler,
+		},
+		{
+			MethodName: "UpdateName",
+			Handler:    _AreaService_UpdateName_Handler,
+		},
+		{
+			MethodName: "UpdateTimeZone",
+			Handler:    _AreaService_UpdateTimeZone_Handler,
+		},
+		{
+			MethodName: "UpdateLanguage",
+			Handler:    _AreaService_UpdateLanguage_Handler,
+		},
+		{
+			MethodName: "UpdateState",
+			Handler:    _AreaService_UpdateState_Handler,
+		},
+		{
+			MethodName: "DeleteById",
+			Handler:    _AreaService_DeleteById_Handler,
+		},
+		{
+			MethodName: "DeleteByCode",
+			Handler:    _AreaService_DeleteByCode_Handler,
+		},
+		{
+			MethodName: "DeleteByName",
+			Handler:    _AreaService_DeleteByName_Handler,
+		},
+		{
+			MethodName: "DeleteByState",
+			Handler:    _AreaService_DeleteByState_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

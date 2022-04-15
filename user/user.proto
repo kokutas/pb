@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package user;
+option go_package = "github.com/kokutas/pb/user";
+
+service UserService {
+
+}
+message User{
+    string id = 1;
+    string name = 2;
+    string code = 3;
+    string accout = 5;
+    string password = 6;
+    string department_id = 7;
+}

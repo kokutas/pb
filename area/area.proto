@@ -1,45 +1,193 @@
 syntax = "proto3";
 
 package area;
-option go_package = "github.com/kokutas/pb/area";
 import public "google/protobuf/timestamp.proto";
+import public "google/protobuf/any.proto";
+option go_package = "github.com/kokutas/pb/area";
 
-//The Area service definition.
-service Area {
-    rpc Save   (SaveRequest  ) returns (SaveReply  );
-    rpc Get    (GetRequest   ) returns (GetReply   );
-    rpc Update (UpdateRequest) returns (UpdateReply);
-    rpc Delete (DeleteRequest) returns (DeleteReply);
+enum State {
+    DISABLED = 0;
+    ENABLE = 1;
 }
-   
-message SaveRequest {
+message Area {
     string id = 1;
     string code = 2;
     string name = 3;
     string time_zone = 4;
-    string state = 5;
-    google.protobuf.Timestamp create_time = 6;
-    google.protobuf.Timestamp update_time = 7;
-    google.protobuf.Timestamp delete_time = 8;
+    repeated string language = 5;
+    State state = 6;
+    int64 create_time = 7;
+    int64 update_time = 8;
+    int64 delete_time = 9;
+}
+message Reply {
+    bool success = 1;
+    int32 code = 2;
+    string reason = 3;
+}
+//The Area service definition.
+service AreaService {
+    rpc Save            (SaveRequest              ) returns (SaveReply              );
+    rpc Get             (GetRequest               ) returns (GetReply               );
+    rpc GetById         (GetByIdRequest           ) returns (GetByIdReply           );
+    rpc GetByCode       (GetByCodeRequest         ) returns (GetByCodeReply         );
+    rpc GetByName       (GetByNameRequest         ) returns (GetByNameReply         );
+    rpc GetByTimeZone   (GetByTimeZoneRequest     ) returns (GetByTimeZoneReply     );
+    rpc GetByLanguage   (GetByLanguageRequest     ) returns (GetByLanguageReply     );
+    rpc GetByState      (GetByStateRequest        ) returns (GetByStateReply        );
+    rpc GetByCreateTime (GetByCreateTimeRequest   ) returns (GetByCreateTimeReply   );
+    rpc GetByUpdateTime (GetByUpdateTimeRequest   ) returns (GetByUpdateTimeReply   );
+    rpc GetByDeleteTime (GetByDeleteTimeRequest   ) returns (GetByDeleteTimeReply   );
+    rpc UpdateCode      (UpdateCodeRequest        ) returns (UpdateCodeReply        );
+    rpc UpdateName      (UpdateNameRequest        ) returns (UpdateNameReply        );
+    rpc UpdateTimeZone  (UpdateTimeZoneRequest    ) returns (UpdateTimeZoneReply    );
+    rpc UpdateLanguage  (UpdateLanguageRequest    ) returns (UpdateLanguageReply    );
+    rpc UpdateState     (UpdateStateRequest       ) returns (UpdateStateReply       );
+    rpc DeleteById      (DeleteByIdRequest        ) returns (DeleteByIdReply        );
+    rpc DeleteByCode    (DeleteByCodeRequest      ) returns (DeleteByCodeReply      );
+    rpc DeleteByName    (DeleteByNameRequest      ) returns (DeleteByNameReply      );
+    rpc DeleteByState   (DeleteByStateRequest     ) returns (DeleteByStateReply     );
+}
+
+message SaveRequest {
+    Area area = 1;
 }
 message SaveReply {
-    string id = 1;
+    Reply reply = 1;
 }
 message GetRequest {
-    string id = 1;
 }
 message GetReply {
+    Reply reply = 1;
+    repeated Area areas = 2;
+}
+message GetByIdRequest {
     string id = 1;
 }
-message UpdateRequest {
-    string id = 1;
+message GetByIdReply {
+    Reply reply = 1;
+    Area areas = 2;
 }
-message UpdateReply {
-    string id = 1;
+message GetByCodeRequest {
+    string code = 1;
 }
-message DeleteRequest {
-    string id = 1;
+message GetByCodeReply {
+    Reply reply = 1;
+    Area area = 2;
 }
-message DeleteReply {
+message GetByNameRequest {
+    string name = 1;
+}        
+message GetByNameReply {
+    Reply reply = 1;
+    Area area = 2;
+}
+message GetByTimeZoneRequest {
+    string time_zone = 1;
+}   
+message GetByTimeZoneReply {
+    Reply reply = 1;
+    Area area = 2;
+}
+message GetByLanguageRequest {
+   repeated string language = 1;
+}
+ message GetByLanguageReply {
+    Reply reply = 1;
+    Area area = 2;
+ }
+message GetByStateRequest {
+    State state = 1;
+}
+ message GetByStateReply {
+    Reply reply = 1;
+    repeated Area area = 2;
+ }
+message GetByCreateTimeRequest {
+    int64 start_time = 1;
+    int64 end_time = 2;
+}
+message GetByCreateTimeReply {
+    Reply reply = 1;
+    repeated Area area = 2;
+}
+message GetByUpdateTimeRequest{
+    int64 start_time = 1;
+    int64 end_time = 2;
+} 
+message GetByUpdateTimeReply {
+    Reply reply = 1;
+    repeated Area area = 2;
+}
+message GetByDeleteTimeRequest {
+    int64 start_time = 1;
+    int64 end_time = 2;
+} 
+message GetByDeleteTimeReply {
+    Reply reply = 1;
+    repeated Area area = 2;
+}
+message UpdateCodeRequest {
     string id = 1;
+    string code = 2;
+}   
+message UpdateCodeReply {
+    Reply reply = 1;
+    Area area = 2;
+}
+message UpdateNameRequest {
+    string id = 1;
+    string name = 2;
+}  
+message UpdateNameReply {
+    Reply reply = 1;
+    Area area = 2;
+}
+message UpdateTimeZoneRequest {
+    string id = 1;
+    string time_zone = 2;
+}    
+message UpdateTimeZoneReply {
+    Reply reply = 1;
+    Area area = 2;
+}
+message UpdateLanguageRequest {
+    string id = 1;
+    repeated string language = 2;
+}
+message UpdateLanguageReply {
+    Reply reply = 1;
+    repeated Area area = 2;
+}
+message UpdateStateRequest {
+    string id = 1;
+    State state = 2;
+}
+message UpdateStateReply {
+    Reply reply = 1;
+    repeated  Area area = 2;
+}
+message DeleteByIdRequest {
+    string id = 1;
+}     
+message DeleteByIdReply {
+    Reply reply = 1;
+}
+message DeleteByCodeRequest {
+    string code = 2;
+}    
+message DeleteByCodeReply {
+    Reply reply = 1;
+}
+message DeleteByNameRequest {
+    string name = 1;
+}    
+message DeleteByNameReply {
+    Reply reply = 1;
+}
+message DeleteByStateRequest {
+    State state = 1;
+}
+message DeleteByStateReply {
+    Reply reply = 1;
 }
