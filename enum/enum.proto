@@ -1,4 +1,11 @@
 syntax = "proto3";
 
 package enum;
+import public "google/protobuf/timestamp.proto";
+import public "google/protobuf/any.proto";
 option go_package = "github.com/kokutas/pb/enum";
+
+enum State {
+    disabled = 0;
+    enable = 1;
+}
