@@ -22,7 +22,7 @@ message Area {
 }
 message Reply {
     bool success = 1;
-    int32 code = 2;
+    int64 code = 2;
     string reason = 3;
 }
 //The Area service definition.
